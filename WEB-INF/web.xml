@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+             http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+  <display-name>Train Ticket Booking System</display-name>
+  <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.welcome.LoginServlet</servlet-class>
+  </servlet>
+	
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+
+ <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.welcome.LogoutServlet</servlet-class>
+  </servlet>
+	
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/LogoutServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>BookingServlet</servlet-name>
+    <servlet-class>com.welcome.BookingServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>BookingServlet</servlet-name>
+    <url-pattern>/BookingServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ConfirmBookingServlet</servlet-name>
+    <servlet-class>com.welcome.ConfirmBookingServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ConfirmBookingServlet</servlet-name>
+    <url-pattern>/ConfirmBookingServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>com.welcome.RegisterServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/RegisterServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>BookingHistoryServlet</servlet-name>
+    <servlet-class>com.welcome.BookingHistoryServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>BookingHistoryServlet</servlet-name>
+    <url-pattern>/BookingHistoryServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>CancelTicketsServlet</servlet-name>
+    <servlet-class>com.welcome.CancelTicketsServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>CancelTicketsServlet</servlet-name>
+    <url-pattern>/CancelTicketsServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CancelledTicketsServlet</servlet-name>
+    <servlet-class>com.welcome.CancelledTicketsServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>CancelledTicketsServlet</servlet-name>
+    <url-pattern>/CancelledTicketsServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ConfirmPassengerServlet</servlet-name>
+    <servlet-class>com.welcome.ConfirmPassengerServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>ConfirmPassengerServlet</servlet-name>
+    <url-pattern>/ConfirmPassengerServlet</url-pattern>
+</servlet-mapping>
+  
+  <servlet>
+    <servlet-name>TrainScheduleServlet</servlet-name>
+    <servlet-class>com.welcome.TrainScheduleServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>TrainScheduleServlet</servlet-name>
+    <url-pattern>/TrainScheduleServlet</url-pattern>
+</servlet-mapping>
+
+  <servlet>
+    <servlet-name>jsp</servlet-name>
+    <servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
+    <init-param>
+        <param-name>fork</param-name>
+        <param-value>false</param-value>
+    </init-param>
+    <load-on-startup>3</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+      <servlet-name>jsp</servlet-name>
+      <url-pattern>*.jsp</url-pattern>
+	</servlet-mapping>
+	
+</web-app>
