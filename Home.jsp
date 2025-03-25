@@ -153,7 +153,6 @@
 
             </div>
 
-            <!-- Main Content -->
             <div class="col-md-10 content">
                 <iframe
                     name="content-frame"
@@ -190,7 +189,6 @@
   </div>
 </div>
 
-<!-- Bootstrap JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
