@@ -40,52 +40,32 @@
             <p>Class: ${sessionScope.travelClass}</p>
             <p>Fare: &#8377;${sessionScope.fare}</p>
 
+            <c:set var="confirmedPassengers" value="${sessionScope.confirmedPassengers}" />
+
             <table class="table table-bordered">
                 <thead class="table-dark">
                     <tr>
                         <th>Passenger Name</th>
                         <th>Age</th>
                         <th>Gender</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <c:set var="confirmedPassengers" value="${sessionScope.confirmedPassengers}" />
-
                     <c:forEach var="i" begin="0" end="${fn:length(sessionScope.passengerNames) - 1}">
                         <tr>
                             <td>
                                 <input type="text" name="passengerName[]" value="${sessionScope.passengerNames[i]}" 
-                                       ${confirmedPassengers.contains(sessionScope.passengerNames[i]) ? 'readonly' : ''} class="form-control">
+                                       readonly class="form-control">
                             </td>
                             <td>
                                 <input type="number" name="age[]" value="${sessionScope.ages[i]}" 
-                                       ${confirmedPassengers.contains(sessionScope.passengerNames[i]) ? 'readonly' : ''} class="form-control">
+                                       readonly class="form-control">
                             </td>
                             <td>
-                                <select name="gender[]" class="form-select" 
-                                        ${confirmedPassengers.contains(sessionScope.passengerNames[i]) ? 'disabled' : ''}>
+                                <select name="gender[]" class="form-select" disabled>
                                     <option value="Male" ${sessionScope.genders[i] == 'Male' ? 'selected' : ''}>Male</option>
                                     <option value="Female" ${sessionScope.genders[i] == 'Female' ? 'selected' : ''}>Female</option>
                                 </select>
-                            </td>
-                            <td>
-                                <c:choose>
-                                    <c:when test="${confirmedPassengers.contains(sessionScope.passengerNames[i])}">
-                                        <button disabled class="btn btn-success">Ticket Confirmed</button>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <form action="ConfirmBookingServlet" method="POST">
-                                            <input type="hidden" name="bookingId" value="${sessionScope.bookingId}">
-                                            <button type="submit" class="btn btn-success" 
-                                                    ${confirmedPassengers.contains(sessionScope.passengerNames[i]) ? 'disabled' : ''}>Confirm Booking</button>
-                                        </form>
-                                      <a href="booking.jsp?edit=true" class="btn btn-warning">Edit</a>
-
-
-                                        
-                                    </c:otherwise>
-                                </c:choose>
                             </td>
                         </tr>
                     </c:forEach>
@@ -93,15 +73,38 @@
             </table>
 
             <p class="fw-bold">Total Fare: &#8377;${sessionScope.fare}</p>
+
+            <div class="text-center">
+                <c:choose>
+                    <c:when test="${sessionScope.allConfirmed}">
+                        <button disabled class="btn btn-success">Ticket Confirmed</button>
+                    </c:when>
+                    <c:otherwise>
+                        <form id="confirmForm" action="ConfirmBookingServlet" method="POST">
+                            <input type="hidden" name="bookingId" value="${sessionScope.bookingId}">
+                            <button type="submit" id="confirmButton" class="btn btn-primary center-btn" onclick="disableButton(event)">Confirm Booking</button>
+                        </form>
+                    </c:otherwise>
+                </c:choose>
+            </div>
         </div>
     </div>
+
     <script>
-    (function preventBackNavigation() {
-        history.pushState(null, null, location.href);
-        window.onpopstate = function () {
+        function disableButton(event) {
+            event.preventDefault(); 
+            let button = document.getElementById("confirmButton");
+            alert("Ticket booked successfully!");
+            document.getElementById("confirmForm").submit();
+            button.disabled = true;
+        }
+
+        (function preventBackNavigation() {
             history.pushState(null, null, location.href);
-        };
-    })();
-</script>
+            window.onpopstate = function () {
+                history.pushState(null, null, location.href);
+            };
+        })();
+    </script>
 </body>
 </html>
