@@ -190,7 +190,7 @@
 
         if (password !== confirmPassword) {
             errorMessage.style.display = "block";
-            event.preventDefault();  // Prevent form submission
+            event.preventDefault();  
         } else {
             errorMessage.style.display = "none";
            
